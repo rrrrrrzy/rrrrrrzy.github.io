@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <!-- Add Tailwind via CDN for simplicity since we didn't fully set up postcss/tailwind config yet, 
+         or we can set it up properly. 
+         Given the user has `bg-indigo-50` etc in the code, they rely on Tailwind. 
+         Let's stick to a proper setup plan or add CDN for now to minimize file creation?
+         The plan said "Configure Vite". Let's assume standard CSS processing. 
+         Wait, I added tailwindcss to package.json. I should also add tailwind.config.js and index.css if I want it to work properly. 
+         
+         Let's add the tailwind CDN script for immediate gratification or set up the config. 
+         Setting up config is robust. 
+         For this step, let's just point to main.jsx.
+    -->
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>
