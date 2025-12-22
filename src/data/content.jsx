@@ -92,6 +92,7 @@ where I also actively engaged in AI startups and knowledge transfer beyond acade
                 "/public/images/gallery/1.jpg",
                 "/public/images/gallery/2.jpg",
                 "/public/images/gallery/3.jpg",
+
             ]
         }
     ]
