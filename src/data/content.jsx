@@ -6,10 +6,10 @@ export const CONFIG = {
         email: "zrao538@connect.hkust-gz.edu.cn",
         github: "https://github.com/rrrrrrzy",
         googleScholar: "https://scholar.google.com/citations?user=Kk9N_l0AAAAJ", // TODO: Update with actual ID
-        cv: "documents/Rao_Ziyang_CV.pdf",
+        cv: "/documents/Rao_Ziyang_CV.pdf",
         // twitter: "https://twitter.com/yourusername",
-        avatar: "images/profile.jpg",
-        favicon: "images/favicon.ico",
+        avatar: "/images/profile.jpg",
+        favicon: "/images/favicon.ico",
         // bio: ""
     },
     researchInterests: [
@@ -79,7 +79,7 @@ where I also actively engaged in AI startups and knowledge transfer beyond acade
             date: "2025-12-22",
             category: "Research",
             excerpt: "My first blog post.",
-            image: "images/gallery/1.jpg",
+            image: "/images/gallery/1.jpg",
             content: "More to come..."
         }
     ],
@@ -89,9 +89,9 @@ where I also actively engaged in AI startups and knowledge transfer beyond acade
             title: "Random",
             description: "Random photo dump.",
             photos: [
-                "images/gallery/1.jpg",
-                "images/gallery/2.jpg",
-                "images/gallery/3.jpg",
+                "/images/gallery/1.jpg",
+                "/images/gallery/2.jpg",
+                "/images/gallery/3.jpg",
 
             ]
         }
