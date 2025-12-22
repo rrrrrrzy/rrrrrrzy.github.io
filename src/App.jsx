@@ -83,7 +83,7 @@ const App = () => {
                             className="text-sm font-black tracking-widest cursor-pointer hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors text-slate-900 dark:text-white"
                             onClick={() => { setCurrentPage('home'); setSelectedBlog(null); }}
                         >
-                            SZ / RESEARCH
+                            ZIYANG RAO
                         </span>
                         <div className="flex items-center gap-8 text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500">
                             <button
@@ -121,7 +121,7 @@ const App = () => {
                             <div className="w-2 h-2 rounded-full bg-blue-400/30"></div>
                         </div>
                         <p className="text-slate-400 dark:text-slate-600 text-[10px] font-black tracking-[0.2em] uppercase">
-                            Curiosity Drives Discovery · {new Date().getFullYear()} · {CONFIG.profile.name}
+                            How far I'll go? · {new Date().getFullYear()} · {CONFIG.profile.name}
                         </p>
                     </footer>
                 </main>

@@ -1,23 +1,36 @@
 export const CONFIG = {
     profile: {
-        name: "张三 (San Zhang)",
-        title: "AI Researcher @ Leading Intelligence Lab",
-        location: "Shanghai, China",
-        email: "san.zhang@example.com",
-        github: "https://github.com/yourusername",
-        twitter: "https://twitter.com/yourusername",
-        avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=San",
-        // 在此处设置你的 Favicon 链接（支持 .png, .ico, .svg）
-        favicon: "https://api.dicebear.com/7.x/bottts/svg?seed=San",
-        bio: "专注于大语言模型（LLM）的对齐、高效微调以及多模态感知。致力于探索通用人工智能（AGI）的边界，多篇论文发表于 ICLR, NeurIPS 和 CVPR。"
+        name: "饶子扬 / Ziyang Rao",
+        title: "Incoming PhD @ IMPRS-IS / University of Tübingen",
+        location: "Guangzhou, China",
+        email: "zrao538@connect.hkust-gz.edu.cn",
+        github: "https://github.com/rrrrrrzy",
+        googleScholar: "https://scholar.google.com/citations?user=Kk9N_l0AAAAJ", // TODO: Update with actual ID
+        // twitter: "https://twitter.com/yourusername",
+        avatar: "/images/profile.jpg",
+        favicon: "/images/favicon.ico",
+        // bio: ""
     },
-
     researchInterests: [
-        { name: "Large Language Models", color: "bg-indigo-50 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300" },
-        { name: "Multimodal Learning", color: "bg-teal-50 text-teal-700 dark:bg-teal-900/30 dark:text-teal-300" },
-        { name: "Reinforcement Learning", color: "bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300" },
-        { name: "AI Safety", color: "bg-slate-100 text-slate-700 dark:bg-slate-800/50 dark:text-slate-300" }
+        { name: "Information Retrieval", color: "bg-indigo-50 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300" },
+        { name: "Mechanistic Interpretability", color: "bg-teal-50 text-teal-700 dark:bg-teal-900/30 dark:text-teal-300" },
+        { name: "Multimodal Language Models", color: "bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300" },
+        // { name: "AI Safety", color: "bg-slate-100 text-slate-700 dark:bg-slate-800/50 dark:text-slate-300"}
     ],
+
+    aboutMe: `
+I am an incoming PhD candidate in the [Health NLP Lab](https://health-nlp.com/) of the University of Tübingen, 
+under the supervision of [Prof. Carsten Eickhoff](https://health-nlp.com/people/carsten) and [Dr.Harry Scells](https://scells.me/). 
+
+My research interests lie in **information retrieval, mechanistic interpretability, and multimodal LLMs**. 
+I am exploring the foundations and dynamics of knowledge representation inside LMs, 
+and the applications of modern IR methods in high-stakes domains like healthcare and medicine. 
+
+Previously, I got my MPhil. degree in AI from HKUST (GZ) supervised by [Prof. Hui Xiong](https://ailab.hkust-gz.edu.cn/) and [Dr. Xuming Hu](https://xuminghu.github.io/), 
+where I also actively engaged in AI startups and knowledge transfer beyond academic pursuits. 
+
+<mark>I am seeking a short-term internship opportunity since my PhD enrollment has been deferred due to visa check.</mark>
+    `,
 
     publications: [
         {
@@ -32,7 +45,7 @@ export const CONFIG = {
 
     projects: [
         {
-            name: "Auto-Research-Agent",
+            name: "Modeling and Interpreting Information Flow in Visual Language Models",
             description: "一个自动检索并总结最新 AI 论文的智能代理系统。",
             tech: "Python, LangChain",
             link: "#",
@@ -42,31 +55,42 @@ export const CONFIG = {
 
     education: [
         {
-            school: "Example University",
-            degree: "Ph.D. in Computer Science",
-            date: "2020 - 2024"
+            school: "IMPRS-IS / University of Tübingen",
+            degree: "incoming PhD. candidate",
+            date: "2025 - present"
+        },
+        {
+            school: "Hong Kong University of Science and Technology (Guangzhou)",
+            degree: "MPhil. in Artificial Intelligence",
+            date: "2023 - 2025"
+        },
+        {
+            school: "Renmin University of China",
+            degree: "BSc. in Economic Statistics",
+            date: "2019 - 2023"
         }
     ],
 
     blogs: [
         {
             id: 1,
-            title: "如何评价 2024 年的大模型对齐技术趋势？",
-            date: "2024-10-20",
+            title: "Welcome to my blog!",
+            date: "2025-12-22",
             category: "Research",
-            excerpt: "从 RLHF 到 DPO，对齐技术正在经历从复杂到简洁的范式演变...",
-            image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
-            content: "这里是文章的详细内容..."
+            excerpt: "My first blog post.",
+            image: "/images/gallery/1.jpg",
+            content: "More to come..."
         }
     ],
 
     galleries: [
         {
-            title: "都市漫步 (City Walk)",
-            description: "记录上海街头的瞬间。",
+            title: "Random",
+            description: "Random photo dump.",
             photos: [
-                "https://images.unsplash.com/photo-1477346611705-65d1883cee1e?auto=format&fit=crop&q=80&w=800",
-                "https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&q=80&w=800"
+                "/images/gallery/1.jpg",
+                "/images/gallery/2.jpg",
+                "/images/gallery/3.jpg",
             ]
         }
     ]
