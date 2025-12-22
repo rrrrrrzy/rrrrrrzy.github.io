@@ -6,6 +6,7 @@ export const CONFIG = {
         email: "zrao538@connect.hkust-gz.edu.cn",
         github: "https://github.com/rrrrrrzy",
         googleScholar: "https://scholar.google.com/citations?user=Kk9N_l0AAAAJ", // TODO: Update with actual ID
+        cv: "/documents/Rao_Ziyang_CV.pdf",
         // twitter: "https://twitter.com/yourusername",
         avatar: "/images/profile.jpg",
         favicon: "/images/favicon.ico",

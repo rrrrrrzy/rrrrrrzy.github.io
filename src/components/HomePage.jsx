@@ -27,6 +27,11 @@ const HomePage = () => (
                             <GraduationCap size={14} /> Scholar
                         </a>
                     )}
+                    {CONFIG.profile.cv && (
+                        <a href={CONFIG.profile.cv} className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors uppercase flex items-center gap-2">
+                            <FileText size={14} /> CV
+                        </a>
+                    )}
                     {/* <a href={CONFIG.profile.twitter} className="hover:text-blue-500 dark:hover:text-blue-400 transition-colors uppercase flex items-center gap-2"><Twitter size={14} /> Twitter</a> */}
                     <a href={`mailto:${CONFIG.profile.email}`} className="hover:text-teal-600 dark:hover:text-teal-400 transition-colors uppercase flex items-center gap-2"><Mail size={14} /> Email</a>
                 </div>
