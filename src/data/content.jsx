@@ -19,14 +19,16 @@ export const CONFIG = {
         // { name: "AI Safety", color: "bg-slate-100 text-slate-700 dark:bg-slate-800/50 dark:text-slate-300"}
     ],
 
+    // NOTE: keep every line flush against the left margin. Markdown treats lines
+    // indented by four or more spaces as a code block, so indenting this template
+    // literal to match the surrounding code renders the whole bio in a grey box.
     aboutMe: `
-        I am a PhD candidate in AI at HKUST (GZ) supervised by [Prof. Hui Xiong](https://ailab.hkust-gz.edu.cn/). 
-        I am exploring embodied AI at the X-Lab of [AI² Robotics](https://ai2robotics.com/en/) as a research intern.
-        My research experience also covers information retrieval, mechanistic interpretability, and multimodal LLMs. 
+I am a PhD candidate in Artificial Intelligence at HKUST (Guangzhou), advised by [Prof. Hui Xiong](https://ailab.hkust-gz.edu.cn/), and a research intern at the X-Lab of [AI² Robotics](https://ai2robotics.com/en/).
 
-        Previously, I got my MPhil. degree in AI from HKUST (GZ) supervised by [Prof. Hui Xiong](https://ailab.hkust-gz.edu.cn/) and [Dr. Xuming Hu](https://xuminghu.github.io/), 
-        where I also actively engaged in AI startups and knowledge transfer beyond academic pursuits. 
-            `,
+My work centres on **embodied AI**: I study the geometry of flow-matching policies and ask when their actions can be trusted, so that vision-language-action models fail loudly rather than silently. This grows out of a wider interest in **uncertainty quantification** and **mechanistic interpretability** — what representations a model actually forms, and what its internals reveal about the reliability of its outputs. My earlier research also spans **information retrieval** and **multimodal LLMs**.
+
+I earned my MPhil in AI at the same lab, co-advised by Prof. Hui Xiong and [Dr. Xuming Hu](https://xuminghu.github.io/), where alongside research I was actively engaged in AI startups and knowledge transfer.
+`,
 
     // Newest first. `authors` wraps the site owner's name in **bold** — it is
     // rendered as Markdown by HomePage.jsx. Omit a key from `links` to hide that
