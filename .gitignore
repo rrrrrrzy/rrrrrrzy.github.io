@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# Build output (deployed to the master branch via `npm run deploy`, not tracked on dev)
+dist/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor / OS cruft
+.DS_Store
+.vscode/
+.idea/
+
+# Local env files
+.env
+.env.local
+.env.*.local

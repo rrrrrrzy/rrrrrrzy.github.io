@@ -41,3 +41,14 @@ To update the live website:
 This script will automatically:
 1.  Build the project (`npm run build`).
 2.  Push the contents of the `dist` folder to the `master` branch.
+
+> **Important**: deploying replaces the entire `master` branch. Files that must sit at the
+> site root — `CNAME` (custom domain) and the site-verification `.txt` — therefore live in
+> `public/` so each build copies them into `dist/`. Don't delete them, or the custom domain
+> will break on the next deploy.
+
+## Editing Content
+
+Nearly all site content lives in one place: the `CONFIG` object in `src/data/content.jsx`
+(profile, about, education, publications, projects, blog posts, photo galleries). Prefer
+editing that over touching the components.

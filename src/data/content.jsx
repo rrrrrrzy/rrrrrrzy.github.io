@@ -5,7 +5,7 @@ export const CONFIG = {
         location: "Guangzhou, China",
         email: "zrao538@connect.hkust-gz.edu.cn",
         github: "https://github.com/rrrrrrzy",
-        googleScholar: "https://scholar.google.com/citations?user=Kk9N_l0AAAAJ", // TODO: Update with actual ID
+        googleScholar: "https://scholar.google.com/citations?user=Kk9N_l0AAAAJ",
         cv: "/documents/Rao_Ziyang_CV.pdf",
         // twitter: "https://twitter.com/yourusername",
         avatar: "/images/profile.jpg",
@@ -33,26 +33,29 @@ where I also actively engaged in AI startups and knowledge transfer beyond acade
 <mark>I am seeking a short-term internship opportunity since my PhD enrollment has been deferred due to visa check.</mark>
     `,
 
-    publications: [
-        {
-            title: "Efficient Alignment of Large Language Models via Sparse Feedback",
-            authors: "San Zhang, Li Si, Wang Wu",
-            venue: "ICLR 2024 (Oral)",
-            venueColor: "bg-indigo-600 dark:bg-indigo-500",
-            links: { pdf: "#", code: "#" },
-            tags: ["Alignment", "Efficiency"]
-        }
-    ],
+    // Rendered by the "Selected Publications" section in HomePage.jsx, which is
+    // currently commented out. Un-comment it there once this list is populated.
+    // Shape:
+    // {
+    //     title: "",
+    //     authors: "",                                        // bold your own name if desired
+    //     venue: "ICLR 2025",
+    //     venueColor: "bg-indigo-600 dark:bg-indigo-500",     // paired light/dark classes
+    //     links: { pdf: "", code: "" },
+    //     tags: ["", ""]
+    // }
+    publications: [],
 
-    projects: [
-        {
-            name: "Modeling and Interpreting Information Flow in Visual Language Models",
-            description: "一个自动检索并总结最新 AI 论文的智能代理系统。",
-            tech: "Python, LangChain",
-            link: "#",
-            accent: "border-l-indigo-400 dark:border-l-indigo-500"
-        }
-    ],
+    // Rendered by the "Selected Projects" section in HomePage.jsx, also commented out.
+    // Shape:
+    // {
+    //     name: "",
+    //     description: "",
+    //     tech: "Python, PyTorch",
+    //     link: "",
+    //     accent: "border-l-indigo-400 dark:border-l-indigo-500"
+    // }
+    projects: [],
 
     education: [
         {
