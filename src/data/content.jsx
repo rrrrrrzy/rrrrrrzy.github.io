@@ -1,7 +1,7 @@
 export const CONFIG = {
     profile: {
         name: "饶子扬 / Ziyang Rao",
-        title: "Incoming PhD @ IMPRS-IS / University of Tübingen",
+        title: "PhD candidate @ HKUST (Guangzhou)",
         location: "Guangzhou, China",
         email: "zrao538@connect.hkust-gz.edu.cn",
         github: "https://github.com/rrrrrrzy",
@@ -13,38 +13,66 @@ export const CONFIG = {
         // bio: ""
     },
     researchInterests: [
-        { name: "Information Retrieval", color: "bg-indigo-50 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300" },
+        { name: "Flow Matching VLA", color: "bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300" },
+        { name: "Uncertainty Quantification", color: "bg-indigo-50 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300" },
         { name: "Mechanistic Interpretability", color: "bg-teal-50 text-teal-700 dark:bg-teal-900/30 dark:text-teal-300" },
-        { name: "Multimodal Language Models", color: "bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300" },
         // { name: "AI Safety", color: "bg-slate-100 text-slate-700 dark:bg-slate-800/50 dark:text-slate-300"}
     ],
 
     aboutMe: `
-I am an incoming PhD candidate in the [Health NLP Lab](https://health-nlp.com/) of the University of Tübingen, 
-under the supervision of [Prof. Carsten Eickhoff](https://health-nlp.com/people/carsten) and [Dr.Harry Scells](https://scells.me/). 
+        I am a PhD candidate in AI at HKUST (GZ) supervised by [Prof. Hui Xiong](https://ailab.hkust-gz.edu.cn/). 
+        I am exploring embodied AI at the X-Lab of [AI² Robotics](https://ai2robotics.com/en/) as a research intern.
+        My research experience also covers information retrieval, mechanistic interpretability, and multimodal LLMs. 
 
-My research interests lie in **information retrieval, mechanistic interpretability, and multimodal LLMs**. 
-I am exploring the foundations and dynamics of knowledge representation inside LMs, 
-and the applications of modern IR methods in high-stakes domains like healthcare and medicine. 
+        Previously, I got my MPhil. degree in AI from HKUST (GZ) supervised by [Prof. Hui Xiong](https://ailab.hkust-gz.edu.cn/) and [Dr. Xuming Hu](https://xuminghu.github.io/), 
+        where I also actively engaged in AI startups and knowledge transfer beyond academic pursuits. 
+            `,
 
-Previously, I got my MPhil. degree in AI from HKUST (GZ) supervised by [Prof. Hui Xiong](https://ailab.hkust-gz.edu.cn/) and [Dr. Xuming Hu](https://xuminghu.github.io/), 
-where I also actively engaged in AI startups and knowledge transfer beyond academic pursuits. 
-
-<mark>I am seeking a short-term internship opportunity since my PhD enrollment has been deferred due to visa check.</mark>
-    `,
-
-    // Rendered by the "Selected Publications" section in HomePage.jsx, which is
-    // currently commented out. Un-comment it there once this list is populated.
-    // Shape:
-    // {
-    //     title: "",
-    //     authors: "",                                        // bold your own name if desired
-    //     venue: "ICLR 2025",
-    //     venueColor: "bg-indigo-600 dark:bg-indigo-500",     // paired light/dark classes
-    //     links: { pdf: "", code: "" },
-    //     tags: ["", ""]
-    // }
-    publications: [],
+    // Newest first. `authors` wraps the site owner's name in **bold** — it is
+    // rendered as Markdown by HomePage.jsx. Omit a key from `links` to hide that
+    // icon. `venueColor` needs paired light/dark classes.
+    publications: [
+        {
+            title: "The Geometric Nature and a Free Proxy for Flow-Matching Uncertainty",
+            authors: "**Ziyang Rao**, Yiren Zhao, Weiyu Guo, Ben Fei, Yandong Guo, Hui Xiong",
+            venue: "Preprint",
+            venueColor: "bg-slate-500 dark:bg-slate-600",
+            links: { pdf: "https://arxiv.org/abs/2607.27933", code: "https://github.com/rrrrrrzy/fm-geometry" },
+            tags: ["Flow Matching", "Uncertainty Quantification", "Embodied AI"]
+        },
+        {
+            title: "Source-Lifted Flow Matching for Intervenable Multimodal Imitation",
+            authors: "He Zhang, Ying Sun, Pengteng Li, Ziyang Chen, Yiren Zhao, **Ziyang Rao**, Weiyu Guo, Yandong Guo, Hui Xiong",
+            venue: "Preprint",
+            venueColor: "bg-slate-500 dark:bg-slate-600",
+            links: { pdf: "https://arxiv.org/abs/2607.10206" },
+            tags: ["Flow Matching", "Imitation Learning"]
+        },
+        {
+            title: "Towards Mechanistically Understanding Why Memorized Knowledge Fails to Generalize in Large Language Model Finetuning",
+            authors: "Lu Dai, **Ziyang Rao**, Yili Wang, Hanqing Wang, Hao Liu, Hui Xiong",
+            venue: "Preprint",
+            venueColor: "bg-slate-500 dark:bg-slate-600",
+            links: { pdf: "https://arxiv.org/abs/2607.08393" },
+            tags: ["Mechanistic Interpretability", "LLM"]
+        },
+        {
+            title: "LLM-Oriented Information Retrieval: A Denoising-First Perspective",
+            authors: "Lu Dai, Liang Sun, Fanpu Cao, **Ziyang Rao**, Cehao Yang, Hao Liu, Hui Xiong",
+            venue: "SIGIR 2026",
+            venueColor: "bg-indigo-600 dark:bg-indigo-500",
+            links: { pdf: "https://arxiv.org/abs/2605.00505", doi: "https://doi.org/10.1145/3805712.3808544" },
+            tags: ["Information Retrieval", "LLM"]
+        },
+        {
+            title: "RGB-Event ISP: The Dataset and Benchmark",
+            authors: "Yunfan Lu, Yanlin Qian, **Ziyang Rao**, Junren Xiao, Liming Chen, Hui Xiong",
+            venue: "ICLR 2025",
+            venueColor: "bg-teal-600 dark:bg-teal-500",
+            links: { pdf: "https://openreview.net/forum?id=BqtoARyz7Y", code: "https://github.com/yunfanLu/RGB-Event-ISP" },
+            tags: ["Event Camera", "Dataset"]
+        }
+    ],
 
     // Rendered by the "Selected Projects" section in HomePage.jsx, also commented out.
     // Shape:
@@ -59,9 +87,9 @@ where I also actively engaged in AI startups and knowledge transfer beyond acade
 
     education: [
         {
-            school: "IMPRS-IS / University of Tübingen",
-            degree: "incoming PhD. candidate",
-            date: "2025 - present"
+            school: "Hong Kong University of Science and Technology (Guangzhou)",
+            degree: "PhD. candidate in Artificial Intelligence",
+            date: "2026 - present"
         },
         {
             school: "Hong Kong University of Science and Technology (Guangzhou)",

@@ -58,6 +58,13 @@ Notable conventions:
 - **Assets** live in `public/` and are referenced by absolute path (`/images/...`, `/documents/...`). Filenames are case-sensitive once deployed; macOS is not, so a wrong-case path works locally and 404s in production. The gallery files are lowercase `.jpg` (the git index once disagreed with the disk on this and has been corrected).
 - **`index.html`** carries the real `<title>`, description, and Open Graph tags. The favicon is declared there *and* re-injected at runtime by `App.jsx` from `CONFIG.profile.favicon`; if you change the icon, update both.
 
-## Empty-by-design content
+## Publications and projects
 
-`CONFIG.publications` and `CONFIG.projects` are empty arrays with the expected object shape documented in comments above each. Their corresponding sections in `HomePage.jsx` are commented out — populate the array *and* un-comment the section together, otherwise you get either an empty heading or unused data.
+`CONFIG.publications` is populated and its section in `HomePage.jsx` is live. Conventions:
+
+- **Newest first.** Preprints use `venue: "Preprint"` with the neutral slate `venueColor`; peer-reviewed work uses its real venue and an accent color.
+- **`authors`** wraps the owner's name in `**Ziyang Rao**`. `HomePage.jsx` splits on `**…**` and bolds it — this is a hand-rolled split, not Markdown, so only that one emphasis form works.
+- **`links`** keys (`pdf`, `code`, `doi`) each render an icon only when present; omit rather than passing `"#"`.
+- The list is maintained by hand. Google Scholar blocks automated fetching, so use the **arXiv API** and **DBLP** to enumerate papers (both worked); note DBLP lists arXiv and conference versions of the same paper separately, and a same-name author (a 2022 *Sensors* paper on drunk-driving detection) appears in DBLP/OpenAlex but is **not** the site owner — don't re-add it.
+
+`CONFIG.projects` is still an empty array with its shape documented in a comment, and its section in `HomePage.jsx` stays commented out. Populate the array *and* un-comment the section together.

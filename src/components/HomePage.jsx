@@ -80,28 +80,45 @@ const HomePage = () => (
             </div>
         </section>
 
-        {/* <section id="publications" className="mb-24">
+        <section id="publications" className="mb-24">
             <SectionTitle title="Selected Publications" accentColor="bg-indigo-600" />
             <div className="space-y-4">
                 {CONFIG.publications.map((pub, idx) => (
                     <FlatCard key={idx} className="border-l-4 border-transparent hover:border-indigo-600 dark:hover:border-indigo-500">
                         <div className="flex flex-col md:flex-row justify-between gap-6">
                             <div className="flex-1">
-                                <div className="flex items-center gap-3 mb-2">
+                                <div className="flex flex-wrap items-center gap-3 mb-2">
                                     <span className={`text-[10px] font-black text-white px-2 py-0.5 tracking-tighter uppercase ${pub.venueColor}`}>{pub.venue}</span>
+                                    {pub.tags?.map((tag, tIdx) => (
+                                        <span key={tIdx} className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest">{tag}</span>
+                                    ))}
                                 </div>
                                 <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2 leading-tight">{pub.title}</h3>
-                                <p className="text-slate-500 dark:text-slate-400 text-sm font-medium">{pub.authors}</p>
+                                <p className="text-slate-500 dark:text-slate-400 text-sm font-medium">
+                                    {/* authors are authored with **bold** around the site owner's name */}
+                                    {pub.authors.split(/\*\*(.+?)\*\*/).map((part, pIdx) => (
+                                        pIdx % 2
+                                            ? <strong key={pIdx} className="text-slate-700 dark:text-slate-200 font-bold">{part}</strong>
+                                            : part
+                                    ))}
+                                </p>
                             </div>
                             <div className="flex gap-4 items-center text-slate-300 dark:text-slate-600">
-                                <a href={pub.links.pdf} className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"><FileText size={20} /></a>
-                                <a href={pub.links.code} className="hover:text-teal-600 dark:hover:text-teal-400 transition-colors"><Code size={20} /></a>
+                                {pub.links.pdf && (
+                                    <a href={pub.links.pdf} target="_blank" rel="noreferrer" title="Paper" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"><FileText size={20} /></a>
+                                )}
+                                {pub.links.code && (
+                                    <a href={pub.links.code} target="_blank" rel="noreferrer" title="Code" className="hover:text-teal-600 dark:hover:text-teal-400 transition-colors"><Code size={20} /></a>
+                                )}
+                                {pub.links.doi && (
+                                    <a href={pub.links.doi} target="_blank" rel="noreferrer" title="DOI" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"><ExternalLink size={20} /></a>
+                                )}
                             </div>
                         </div>
                     </FlatCard>
                 ))}
             </div>
-        </section> */}
+        </section>
 
         {/* <section id="projects" className="mb-24">
             <SectionTitle title="Selected Projects" accentColor="bg-teal-500" />
