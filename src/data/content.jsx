@@ -35,7 +35,23 @@ I earned my MPhil in AI at the same lab, co-advised by Prof. Hui Xiong and [Dr. 
     // icon. `venueColor` needs paired light/dark classes.
     publications: [
         {
-            title: "The Geometric Nature and a Free Proxy for Flow-Matching Uncertainty",
+            title: "U-EHR: A Self-Evolving EHR Agent with Step-Level Credit Assignment and UCB-Guided Memory Retrieval",
+            authors: "Hao Wu, Zihan Wang, **Ziyang Rao**, Heyi Lin, Jinjing Zhu, Qianyi Cai, Yi Zhou, An Lin, Hao Wang, Hui Xiong",
+            venue: "KDD 2026",
+            venueColor: "bg-indigo-600 dark:bg-indigo-500",
+            links: { pdf: "https://dl.acm.org/doi/pdf/10.1145/3770855.3819038", doi: "https://doi.org/10.1145/3770855.3819038" },
+            tags: ["LLM Agents", "Electronic Health Records", "Memory"]
+        },
+        {
+            title: "How Should Vision-Language-Action Models Use Proprioceptive State?",
+            authors: "Yiren Zhao, Ziyang Chen, **Ziyang Rao**, Pengteng Li, He Zhang, Weiyu Guo, Yandong Guo, Rushi Dai",
+            venue: "Preprint",
+            venueColor: "bg-slate-500 dark:bg-slate-600",
+            links: { pdf: "https://arxiv.org/abs/2608.03052" },
+            tags: ["Vision-Language-Action", "Proprioception", "Embodied AI"]
+        },
+        {
+            title: "The Geometry of Flow-Matching Uncertainty: A Cost-free Uncertainty Proxy and Its Application in Flow-based VLA Failure Detection",
             authors: "**Ziyang Rao**, Yiren Zhao, Weiyu Guo, Ben Fei, Yandong Guo, Hui Xiong",
             venue: "Preprint",
             venueColor: "bg-slate-500 dark:bg-slate-600",
@@ -47,7 +63,8 @@ I earned my MPhil in AI at the same lab, co-advised by Prof. Hui Xiong and [Dr. 
             authors: "He Zhang, Ying Sun, Pengteng Li, Ziyang Chen, Yiren Zhao, **Ziyang Rao**, Weiyu Guo, Yandong Guo, Hui Xiong",
             venue: "Preprint",
             venueColor: "bg-slate-500 dark:bg-slate-600",
-            links: { pdf: "https://arxiv.org/abs/2607.10206" },
+            // Scholar lists the v1 authors; v2 has a different author list.
+            links: { pdf: "https://arxiv.org/abs/2607.10206v1" },
             tags: ["Flow Matching", "Imitation Learning"]
         },
         {
