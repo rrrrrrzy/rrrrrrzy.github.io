@@ -30,10 +30,19 @@ My work centres on **embodied AI**: I study the geometry of flow-matching polici
 I earned my MPhil in AI at the same lab, co-advised by Prof. Hui Xiong and [Dr. Xuming Hu](https://xuminghu.github.io/), where alongside research I was actively engaged in AI startups and knowledge transfer.
 `,
 
-    // Newest first. `authors` wraps the site owner's name in **bold** — it is
+    // First-author papers, then accepted papers, then other preprints;
+    // newest first within each group. `authors` wraps the owner's name in **bold** — it is
     // rendered as Markdown by HomePage.jsx. Omit a key from `links` to hide that
     // icon. `venueColor` needs paired light/dark classes.
     publications: [
+        {
+            title: "The Geometry of Flow-Matching Uncertainty: A Cost-free Uncertainty Proxy and Its Application in Flow-based VLA Failure Detection",
+            authors: "**Ziyang Rao**, Yiren Zhao, Weiyu Guo, Ben Fei, Yandong Guo, Hui Xiong",
+            venue: "Preprint",
+            venueColor: "bg-slate-500 dark:bg-slate-600",
+            links: { pdf: "https://arxiv.org/abs/2607.27933", code: "https://github.com/rrrrrrzy/fm-geometry" },
+            tags: ["Flow Matching", "Uncertainty Quantification", "Embodied AI"]
+        },
         {
             title: "U-EHR: A Self-Evolving EHR Agent with Step-Level Credit Assignment and UCB-Guided Memory Retrieval",
             authors: "Hao Wu, Zihan Wang, **Ziyang Rao**, Heyi Lin, Jinjing Zhu, Qianyi Cai, Yi Zhou, An Lin, Hao Wang, Hui Xiong",
@@ -43,20 +52,28 @@ I earned my MPhil in AI at the same lab, co-advised by Prof. Hui Xiong and [Dr. 
             tags: ["LLM Agents", "Electronic Health Records", "Memory"]
         },
         {
+            title: "LLM-Oriented Information Retrieval: A Denoising-First Perspective",
+            authors: "Lu Dai, Liang Sun, Fanpu Cao, **Ziyang Rao**, Cehao Yang, Hao Liu, Hui Xiong",
+            venue: "SIGIR 2026",
+            venueColor: "bg-indigo-600 dark:bg-indigo-500",
+            links: { pdf: "https://arxiv.org/abs/2605.00505", doi: "https://doi.org/10.1145/3805712.3808544" },
+            tags: ["Information Retrieval", "LLM"]
+        },
+        {
+            title: "RGB-Event ISP: The Dataset and Benchmark",
+            authors: "Yunfan Lu, Yanlin Qian, **Ziyang Rao**, Junren Xiao, Liming Chen, Hui Xiong",
+            venue: "ICLR 2025",
+            venueColor: "bg-teal-600 dark:bg-teal-500",
+            links: { pdf: "https://openreview.net/forum?id=BqtoARyz7Y", code: "https://github.com/yunfanLu/RGB-Event-ISP" },
+            tags: ["Event Camera", "Dataset"]
+        },
+        {
             title: "How Should Vision-Language-Action Models Use Proprioceptive State?",
             authors: "Yiren Zhao, Ziyang Chen, **Ziyang Rao**, Pengteng Li, He Zhang, Weiyu Guo, Yandong Guo, Rushi Dai",
             venue: "Preprint",
             venueColor: "bg-slate-500 dark:bg-slate-600",
             links: { pdf: "https://arxiv.org/abs/2608.03052" },
             tags: ["Vision-Language-Action", "Proprioception", "Embodied AI"]
-        },
-        {
-            title: "The Geometry of Flow-Matching Uncertainty: A Cost-free Uncertainty Proxy and Its Application in Flow-based VLA Failure Detection",
-            authors: "**Ziyang Rao**, Yiren Zhao, Weiyu Guo, Ben Fei, Yandong Guo, Hui Xiong",
-            venue: "Preprint",
-            venueColor: "bg-slate-500 dark:bg-slate-600",
-            links: { pdf: "https://arxiv.org/abs/2607.27933", code: "https://github.com/rrrrrrzy/fm-geometry" },
-            tags: ["Flow Matching", "Uncertainty Quantification", "Embodied AI"]
         },
         {
             title: "Source-Lifted Flow Matching for Intervenable Multimodal Imitation",
@@ -74,22 +91,6 @@ I earned my MPhil in AI at the same lab, co-advised by Prof. Hui Xiong and [Dr. 
             venueColor: "bg-slate-500 dark:bg-slate-600",
             links: { pdf: "https://arxiv.org/abs/2607.08393" },
             tags: ["Mechanistic Interpretability", "LLM"]
-        },
-        {
-            title: "LLM-Oriented Information Retrieval: A Denoising-First Perspective",
-            authors: "Lu Dai, Liang Sun, Fanpu Cao, **Ziyang Rao**, Cehao Yang, Hao Liu, Hui Xiong",
-            venue: "SIGIR 2026",
-            venueColor: "bg-indigo-600 dark:bg-indigo-500",
-            links: { pdf: "https://arxiv.org/abs/2605.00505", doi: "https://doi.org/10.1145/3805712.3808544" },
-            tags: ["Information Retrieval", "LLM"]
-        },
-        {
-            title: "RGB-Event ISP: The Dataset and Benchmark",
-            authors: "Yunfan Lu, Yanlin Qian, **Ziyang Rao**, Junren Xiao, Liming Chen, Hui Xiong",
-            venue: "ICLR 2025",
-            venueColor: "bg-teal-600 dark:bg-teal-500",
-            links: { pdf: "https://openreview.net/forum?id=BqtoARyz7Y", code: "https://github.com/yunfanLu/RGB-Event-ISP" },
-            tags: ["Event Camera", "Dataset"]
         }
     ],
 

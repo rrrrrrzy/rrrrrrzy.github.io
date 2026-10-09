@@ -62,7 +62,7 @@ Notable conventions:
 
 `CONFIG.publications` is populated and its section in `HomePage.jsx` is live. Conventions:
 
-- **Newest first.** Preprints use `venue: "Preprint"` with the neutral slate `venueColor`; peer-reviewed work uses its real venue and an accent color.
+- **First-author papers first, then accepted papers, then other preprints; newest first within each group.** Preprints use `venue: "Preprint"` with the neutral slate `venueColor`; peer-reviewed work uses its real venue and an accent color.
 - **`authors`** wraps the owner's name in `**Ziyang Rao**`. `HomePage.jsx` splits on `**…**` and bolds it — this is a hand-rolled split, not Markdown, so only that one emphasis form works.
 - **`links`** keys (`pdf`, `code`, `doi`) each render an icon only when present; omit rather than passing `"#"`.
 - The list is maintained by hand. Google Scholar blocks automated fetching, so use the **arXiv API** and **DBLP** to enumerate papers (both worked); note DBLP lists arXiv and conference versions of the same paper separately, and a same-name author (a 2022 *Sensors* paper on drunk-driving detection) appears in DBLP/OpenAlex but is **not** the site owner — don't re-add it.
