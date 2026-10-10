@@ -52,3 +52,23 @@ This script will automatically:
 Nearly all site content lives in one place: the `CONFIG` object in `src/data/content.jsx`
 (profile, about, education, publications, projects, blog posts, photo galleries). Prefer
 editing that over touching the components.
+
+## FM Geometry project homepage
+
+The Blog project card links to `/fm-geometry/`, a standalone paper homepage sharing
+the site's typography, colors, and theme preference. Vite builds a separate HTML
+entry so the URL works on GitHub Pages without a client-side routing fallback.
+
+- `src/data/fmGeometry.js`: authors, contributions, theoretical and empirical evidence, reported results, demo captions, and BibTeX.
+- `src/components/PaperPage.jsx` and `PaperPage.css`: project layout and interactions.
+- `fm-geometry/index.html`: page title and social sharing metadata.
+- `public/fm-geometry/media/`: optimized paper figures, video posters, and H.264 MP4s.
+
+Paper metadata and results follow arXiv:2607.27933v3. Table averages are reproduced
+as reported, rather than recalculated from rounded cells. Figures come from the
+supplied paper sources; the four individual videos come from the supplied
+`aaai2027/vid` recordings. The correlation chart reproduces Table 1 and lets
+readers compare full-path and best-prefix scores across three benchmarks. Videos load on demand and retain manual playback.
+
+Run `npm run build` then `npm run preview` to check both `/fm-geometry/` and `/#blog`.
+The existing deployment command publishes both pages together.

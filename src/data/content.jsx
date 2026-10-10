@@ -125,14 +125,14 @@ I earned my MPhil in AI at the same lab, co-advised by Prof. Hui Xiong and [Dr. 
 
     blogs: [
         {
-            id: 1,
-            title: "Welcome to my blog!",
-            date: "2025-12-22",
-            category: "Research",
-            excerpt: "My first blog post.",
-            image: "/images/gallery/1.jpg",
-            content: "More to come..."
-        }
+            id: 'fm-geometry',
+            title: 'The Geometric Nature of Flow Matching Uncertainty',
+            date: '2026-08-06',
+            category: 'Paper',
+            excerpt: 'A cost-free uncertainty proxy from a single denoising trajectory. Explore the method, results, and robot demonstrations.',
+            image: '/fm-geometry/media/teaser.webp',
+            href: '/fm-geometry/',
+        },
     ],
 
     galleries: [
