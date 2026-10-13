@@ -3,8 +3,15 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+const root = document.getElementById('root');
+const app = (
     <React.StrictMode>
-        <App />
-    </React.StrictMode>,
-)
+        <App pathname={window.location.pathname} />
+    </React.StrictMode>
+);
+
+if (root.hasChildNodes()) {
+    ReactDOM.hydrateRoot(root, app);
+} else {
+    ReactDOM.createRoot(root).render(app);
+}

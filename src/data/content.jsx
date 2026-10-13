@@ -40,7 +40,7 @@ I earned my MPhil in AI at the same lab, co-advised by Prof. Hui Xiong and [Dr. 
             authors: "**Ziyang Rao**, Yiren Zhao, Weiyu Guo, Ben Fei, Yandong Guo, Hui Xiong",
             venue: "Preprint",
             venueColor: "bg-slate-500 dark:bg-slate-600",
-            links: { pdf: "https://arxiv.org/abs/2607.27933", code: "https://github.com/rrrrrrzy/fm-geometry" },
+            links: { project: "/fm-geometry/", pdf: "https://arxiv.org/abs/2607.27933", code: "https://github.com/rrrrrrzy/fm-geometry" },
             tags: ["Flow Matching", "Uncertainty Quantification", "Embodied AI"]
         },
         {

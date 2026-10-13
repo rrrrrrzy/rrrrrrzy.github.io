@@ -6,21 +6,17 @@ import BlogPage, { BlogDetail } from './components/BlogPage';
 import LifePage from './components/LifePage';
 import PaperPage from './components/PaperPage';
 
-const App = () => {
-    const [currentPage, setCurrentPage] = useState(() => window.location.hash === '#blog' ? 'blog' : 'home');
+const App = ({ pathname = '/' }) => {
+    const [currentPage, setCurrentPage] = useState('home');
     const [selectedBlog, setSelectedBlog] = useState(null);
 
-    // 1. 初始化深色模式 (支持 LocalStorage 和 系统偏好)
-    const [isDark, setIsDark] = useState(() => {
-        if (typeof window !== 'undefined') {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme) {
-                return savedTheme === 'dark';
-            }
-            return window.matchMedia('(prefers-color-scheme: dark)').matches;
-        }
-        return false;
-    });
+    // Match the static HTML on the first client render, then restore preferences.
+    const [isDark, setIsDark] = useState(false);
+    useEffect(() => {
+        if (window.location.hash === '#blog') setCurrentPage('blog');
+        const savedTheme = localStorage.getItem('theme');
+        setIsDark(savedTheme ? savedTheme === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches);
+    }, []);
 
     // 2. 设置 Favicon
     useEffect(() => {
@@ -55,7 +51,7 @@ const App = () => {
         });
     };
 
-    if (/^\/fm-geometry(?:\/|$)/.test(window.location.pathname)) {
+    if (/^\/fm-geometry(?:\/|$)/.test(pathname)) {
         return <PaperPage isDark={isDark} toggleTheme={toggleTheme} />;
     }
 

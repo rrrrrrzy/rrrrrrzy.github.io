@@ -4,6 +4,11 @@ import { FM_PAPER as paper } from '../data/fmGeometry';
 import './PaperPage.css';
 
 const media = '/fm-geometry/media/';
+const figureSizes = {
+    fm_field: [2000, 903],
+    d3il_accel_branches: [1315, 860],
+    denoise_step_sweep_prefix_curves: [1159, 1172],
+};
 const sections = [['overview', 'Overview'], ['demos', 'Demos'], ['method', 'Method'], ['results', 'Results'], ['citation', 'BibTeX']];
 
 function SectionHeading({ number, eyebrow, title, children }) {
@@ -17,7 +22,7 @@ function SectionHeading({ number, eyebrow, title, children }) {
 function Figure({ name, alt, children, className = '' }) {
     return <figure className={`paper-figure ${className}`}>
         <a href={`${media}${name}.webp`} target="_blank" rel="noreferrer" aria-label={`Enlarge figure: ${alt}`}>
-            <img src={`${media}${name}.webp`} alt={alt} loading="lazy" />
+            <img src={`${media}${name}.webp`} alt={alt} width={figureSizes[name]?.[0]} height={figureSizes[name]?.[1]} loading="lazy" decoding="async" />
         </a>
         {children && <figcaption>{children}</figcaption>}
     </figure>;
@@ -117,10 +122,10 @@ export default function PaperPage({ isDark, toggleTheme }) {
                     <div className="paper-lead-panel">
                         <div className="paper-lead-copy"><div className="paper-eyebrow">THE IDEA IN ONE SENTENCE</div>
                             <h2>The path to an action<br />reveals its uncertainty.</h2>
-                            <p>Read <strong>denoising acceleration</strong> from the trajectory your policy already computes. A geometric signal for knowing when a robot’s next action deserves a second look.</p>
+                            <p>Estimate <strong>flow matching uncertainty</strong> with <strong>denoising acceleration</strong> from the trajectory your policy already computes. A cost-free signal for online failure detection in <strong>vision-language-action (VLA) models</strong>, without extra model evaluations, training, or resampling.</p>
                             <a href="#method" className="paper-text-link">Explore the geometry <ArrowDown size={15} /></a>
                         </div>
-                        <figure><img src={`${media}teaser.webp`} alt="An ideally confident flow contracts to one endpoint; an uncertain field deforms the denoising trajectories." fetchPriority="high" /><figcaption>From a certain flow to an uncertain field.</figcaption></figure>
+                        <figure><img src={`${media}teaser.webp`} alt="Flow matching uncertainty: a confident field contracts to one endpoint, while uncertainty deforms the denoising trajectories." width="2000" height="1141" fetchpriority="high" /><figcaption>From a certain flow to an uncertain field.</figcaption></figure>
                     </div>
                     <div className="paper-contributions paper-overview-contributions">{paper.contributions.map((item, i) => <article key={item.title}><span className="paper-card-number">0{i + 1}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
                 </section>
@@ -128,7 +133,7 @@ export default function PaperPage({ isDark, toggleTheme }) {
                 <section id="demos" className="paper-container paper-film">
                     <span id="film" className="paper-anchor" />
                     <div className="paper-film-heading"><span className="paper-eyebrow">WATCH IT IN ACTION</span><span>Simulation & real hardware</span></div>
-                    <h2>Real time failure detection at zero cost.</h2>
+                    <h2>Online VLA failure detection at zero cost.</h2>
                     <p className="paper-film-description">From simulation to a physical arm: the trajectory supplies the score, and CUSUM tracks sustained deviations.</p>
                     <div className="paper-segmented paper-demo-switch" role="group" aria-label="Select demonstration environment"><button aria-pressed={demoGroup === 'real'} onClick={() => setDemoGroup('real')}>Real hardware</button><button aria-pressed={demoGroup === 'simulation'} onClick={() => setDemoGroup('simulation')}>Simulation</button></div>
                     <div className="paper-demo-grid">{paper.demos[demoGroup].map(demo => <DemoCard key={demo.file} demo={demo} />)}</div>
@@ -136,7 +141,7 @@ export default function PaperPage({ isDark, toggleTheme }) {
 
                 <section id="method" className="paper-section paper-section-tint">
                     <div className="paper-container">
-                        <SectionHeading number="01" eyebrow="THE METHOD" title="A geometric read, already in the forward pass.">Grounded in flow geometry. Validated against resampled uncertainty. A single denoising path supplies both the signal and the evidence.</SectionHeading>
+                        <SectionHeading number="01" eyebrow="THE METHOD" title="Denoising acceleration for flow matching uncertainty.">Grounded in flow geometry. Validated against resampled uncertainty. A single denoising path supplies both the signal and the evidence.</SectionHeading>
                         <Figure name="fm_field" alt="Flow fields under certainty, aleatoric uncertainty, and epistemic uncertainty, with toy and robotic examples">A single target produces a straight path; multiple plausible actions produce branches; unfamiliar inputs can scatter endpoints and bend the path. Figure 2 of the paper.</Figure>
                         <div className="paper-equation-panel">
                             <div><span className="paper-eyebrow">DENOISING ACCELERATION</span><div className="paper-equation" aria-label="accel p equals p times the sum of norms of consecutive velocity differences divided by the sum of velocity norms"><i>accel</i><sub>p</sub><span>=</span><span className="paper-fraction"><span>p ∑<sub>t=1</sub><sup>p−1</sup> ‖v<sub>t</sub> − v<sub>t−1</sub>‖</span><span>∑<sub>t=0</sub><sup>p−1</sup> ‖v<sub>t</sub>‖</span></span></div></div>
@@ -171,6 +176,7 @@ export default function PaperPage({ isDark, toggleTheme }) {
 
                 <section id="citation" className="paper-container paper-section">
                     <SectionHeading number="03" eyebrow="BUILD ON THIS WORK" title="Code & citation.">Explore the implementation, reproduce the experiments, or cite the paper.</SectionHeading>
+                    <p className="paper-small paper-publication-title">Preprint title: <a href={paper.abstractUrl} target="_blank" rel="noreferrer">{paper.citationTitle}</a>. arXiv:{paper.arxivId}.</p>
                     <a className="paper-repo-link" href={paper.code} target="_blank" rel="noreferrer"><Github size={25} /><div><strong>rrrrrrzy / fm-geometry</strong><span>Reference implementation · experiment pipeline · reproduction guide</span></div><ArrowRight size={20} /></a>
                     <div className="paper-citation"><div className="paper-citation-toolbar"><span>BIBTEX</span><button onClick={copyCitation}>{copyStatus === 'Copied' ? <Check size={14} /> : <Copy size={14} />}{copyStatus === 'Copied' ? 'Copied' : 'Copy citation'}</button></div><pre><code>{paper.bibtex}</code></pre><span className="paper-copy-status" role="status">{copyStatus}</span></div>
                 </section>

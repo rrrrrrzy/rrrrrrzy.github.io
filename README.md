@@ -72,3 +72,23 @@ readers compare full-path and best-prefix scores across three benchmarks. Videos
 
 Run `npm run build` then `npm run preview` to check both `/fm-geometry/` and `/#blog`.
 The existing deployment command publishes both pages together.
+
+### Search indexing
+
+`npm run build` now runs `scripts/prerender.mjs` after Vite. It uses
+`src/entry-server.jsx` to render the homepage and project page from the same React
+components used in the browser. The generated HTML contains the actual page
+content; `src/main.jsx` hydrates it to restore the interactive controls. Initial
+theme and hash navigation are restored after hydration.
+
+The project build also adds citation metadata and `ScholarlyArticle` JSON-LD from
+`src/data/fmGeometry.js`. Keep `citationTitle`, authors, publication date, and
+arXiv links consistent with the paper. Page and social descriptions live in
+`fm-geometry/index.html`; update those alongside the data description.
+
+`public/robots.txt` and `public/sitemap.xml` are copied into `dist/`. Add new
+indexable page URLs to the sitemap when adding routes. Hash tabs such as
+`/#blog` are not separate documents and should not be listed.
+
+See [the SEO rollout guide](docs/fm-geometry-seo.md) for target queries and
+post-deployment search-console checks.

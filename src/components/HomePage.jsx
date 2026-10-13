@@ -93,7 +93,7 @@ const HomePage = () => (
                                         <span key={tIdx} className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest">{tag}</span>
                                     ))}
                                 </div>
-                                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2 leading-tight">{pub.title}</h3>
+                                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2 leading-tight">{pub.links.project ? <a href={pub.links.project} className="hover:text-indigo-600 dark:hover:text-indigo-400">{pub.title}</a> : pub.title}</h3>
                                 <p className="text-slate-500 dark:text-slate-400 text-sm font-medium">
                                     {/* authors are authored with **bold** around the site owner's name */}
                                     {pub.authors.split(/\*\*(.+?)\*\*/).map((part, pIdx) => (

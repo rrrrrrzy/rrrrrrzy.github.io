@@ -1,6 +1,12 @@
 // Content follows arXiv:2607.27933v3, Table 2, and the supplied demo recordings.
 export const FM_PAPER = {
     title: 'The Geometric Nature of Flow Matching Uncertainty',
+    citationTitle: 'The Geometry of Flow-Matching Uncertainty: A Cost-free Uncertainty Proxy and Its Application in Flow-based VLA Failure Detection',
+    url: 'https://www.ziyangrao.com/fm-geometry/',
+    arxivId: '2607.27933',
+    datePublished: '2026-07-30',
+    abstractUrl: 'https://arxiv.org/abs/2607.27933',
+    description: 'Estimate flow matching uncertainty from a single denoising trajectory. Denoising acceleration enables online VLA failure detection without extra model calls.',
     subtitle: 'A Cost-free Uncertainty Proxy and Application in Flow-based VLA Failure Detection',
     paper: 'https://arxiv.org/pdf/2607.27933',
     code: 'https://github.com/rrrrrrzy/fm-geometry',
@@ -64,7 +70,7 @@ export const FM_PAPER = {
     },
     bibtex: `@article{rao2026geometry,
   title={The Geometry of Flow-Matching Uncertainty: A Cost-free
-         Uncertainty Proxy and Application in Flow-based VLA
+         Uncertainty Proxy and Its Application in Flow-based VLA
          Failure Detection},
   author={Rao, Ziyang and Zhao, Yiren and Guo, Weiyu and
           Fei, Ben and Guo, Yandong and Xiong, Hui},
