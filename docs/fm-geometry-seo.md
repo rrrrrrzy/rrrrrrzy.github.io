@@ -22,7 +22,7 @@
 - 项目页 title 与 description 明确说明研究问题、方法和应用；保持现有展示标题，并在正文和元数据中补齐 arXiv 正式标题。
 - 添加六位作者、首次提交日期 2026-07-30、PDF 链接与 arXiv ID 的 citation 元数据。信息已对照 arXiv 摘要页核验。
 - 添加与可见内容一致的 ScholarlyArticle JSON-LD，关联论文、作者与 PDF。这帮助识别内容，不保证排名、富媒体结果或 Google Scholar 单独收录。
-- 添加 sitemap.xml、robots.txt，并为首页补 canonical。项目页沿用 www 域名和尾部斜杠作为 canonical。
+- 构建自动生成 sitemap.xml、robots.txt，并为全部页面生成 canonical。项目页沿用 www 域名和尾部斜杠作为 canonical。
 - 首页 Selected Publications 的论文标题直接链接项目页，减少仅通过 Blog 按钮发现页面的依赖。
 - 简介展开 vision-language-action (VLA)，方法标题使用 denoising acceleration 和 flow matching uncertainty，保持文字自然且符合实际研究内容。
 - 图像声明尺寸以预留空间，首图优先加载，其余方法图延迟加载。视频仍按需加载。尚未实测 Core Web Vitals。
@@ -30,8 +30,8 @@
 
 ## 发布与收录
 
-1. 本地检查 `npm run build`，再用 `npm run preview` 查看项目页、首页、`/#blog`、深浅色主题以及图表和视频切换。
-2. 按仓库现有流程部署：`npm run deploy`。该命令会构建并更新 GitHub Pages 的 master 分支；本次本地 SEO 改动尚未部署。
+1. 本地检查 `npm run build`，再用 `npm run preview` 查看项目页、首页、`/blog/`、旧的 `/#blog` 跳转、深浅色主题以及图表和视频切换。
+2. 按仓库现有流程部署：`npm run deploy`。该命令会构建、检查并更新 GitHub Pages 的 master 分支；发布后运行 `npm run seo:live` 验证。
 3. 发布后确认项目页为 HTTP 200，查看网页源代码时能看到论文正文；检查 `/robots.txt` 与 `/sitemap.xml` 均返回 200。
 4. 在 Google Search Console 验证域名资源，提交 `https://www.ziyangrao.com/sitemap.xml`，对项目页执行 URL 检查、实时测试和请求编入索引。检查“用户声明的 canonical”与“Google 选择的 canonical”是否一致。
 5. 在 Bing Webmaster Tools 提交相同 sitemap。如果主要面向中文搜索，再单独评估百度收录和有实质内容的中文解读页。
@@ -47,3 +47,5 @@
 - 用 PageSpeed Insights 检查移动端 LCP、INP、CLS。如果共享 JS 或首图成为瓶颈，再基于测量拆分资源和优化图片，不凭猜测重构。
 
 成功标准应分开看：页面可抓取、被收录、目标查询获得展示、最终带来论文与代码访问。仅添加 sitemap 或请求索引不会保证排名靠前。
+
+全站路由、SEO 配置和后续维护流程见 [全站 SEO 与维护手册](seo-maintenance.md)。

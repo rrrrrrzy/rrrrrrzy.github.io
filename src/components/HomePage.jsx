@@ -5,13 +5,14 @@ import rehypeRaw from 'rehype-raw';
 import { CONFIG } from '../data/content';
 import FlatCard from './ui/FlatCard';
 import SectionTitle from './ui/SectionTitle';
+import ResponsiveImage from './ui/ResponsiveImage';
 
 const HomePage = () => (
     <div className="animate-in fade-in duration-500">
         <header className="mb-12 flex flex-col md:flex-row gap-12 items-center md:items-start text-center md:text-left">
             <div className="relative">
                 <div className="absolute -inset-2 bg-gradient-to-tr from-indigo-100 to-teal-50 dark:from-indigo-500/10 dark:to-teal-500/10 rounded-full blur-2xl opacity-60"></div>
-                <img src={CONFIG.profile.avatar} alt="Profile" className="relative w-36 h-36 md:w-44 md:h-44 bg-white dark:bg-slate-800 border-4 border-white dark:border-slate-800 shadow-lg" />
+                <ResponsiveImage src={CONFIG.profile.avatar} alt={`Portrait of ${CONFIG.profile.nameEnglish} (${CONFIG.profile.nameChinese})`} sizes="(min-width: 768px) 176px, 144px" fetchpriority="high" className="relative w-36 h-36 md:w-44 md:h-44 object-cover bg-white dark:bg-slate-800 border-4 border-white dark:border-slate-800 shadow-lg" />
             </div>
             <div className="flex-1">
                 <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 mb-3 tracking-tighter">{CONFIG.profile.name}</h1>
@@ -105,13 +106,13 @@ const HomePage = () => (
                             </div>
                             <div className="flex gap-4 items-center text-slate-300 dark:text-slate-600">
                                 {pub.links.pdf && (
-                                    <a href={pub.links.pdf} target="_blank" rel="noreferrer" title="Paper" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"><FileText size={20} /></a>
+                                    <a href={pub.links.pdf} target="_blank" rel="noreferrer" aria-label={`Read paper: ${pub.title}`} title="Paper" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"><FileText size={20} /></a>
                                 )}
                                 {pub.links.code && (
-                                    <a href={pub.links.code} target="_blank" rel="noreferrer" title="Code" className="hover:text-teal-600 dark:hover:text-teal-400 transition-colors"><Code size={20} /></a>
+                                    <a href={pub.links.code} target="_blank" rel="noreferrer" aria-label={`Code for ${pub.title}`} title="Code" className="hover:text-teal-600 dark:hover:text-teal-400 transition-colors"><Code size={20} /></a>
                                 )}
                                 {pub.links.doi && (
-                                    <a href={pub.links.doi} target="_blank" rel="noreferrer" title="DOI" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"><ExternalLink size={20} /></a>
+                                    <a href={pub.links.doi} target="_blank" rel="noreferrer" aria-label={`Publication record: ${pub.title}`} title="DOI" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"><ExternalLink size={20} /></a>
                                 )}
                             </div>
                         </div>

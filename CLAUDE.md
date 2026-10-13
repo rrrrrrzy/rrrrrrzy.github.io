@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-The owner's personal academic homepage (Ziyang Rao) — a single-page React + Vite + Tailwind site deployed to GitHub User Pages at https://www.ziyangrao.com. Maintenance is content-driven: most requests will be "update my bio / add a publication / add photos", not feature work.
+The owner's personal academic homepage (Ziyang Rao) — a React + Vite + Tailwind site with prerendered page URLs, deployed to GitHub User Pages at https://www.ziyangrao.com. Maintenance is content-driven: most requests will be "update my bio / add a publication / add photos", not feature work.
 
 ## Commands
 
@@ -16,7 +16,7 @@ npm run deploy    # predeploy runs build, then gh-pages pushes dist/ to master
 npm run preview   # serve the built dist/ locally
 ```
 
-There is no test suite, linter, or formatter configured. Don't invent one unless asked.
+The build includes scoped SEO validation via `npm run seo:check`; `npm run seo:live` verifies deployed pages. There is no general test suite, linter, or formatter. Read `AGENTS.md` and `docs/seo-maintenance.md` before maintenance work.
 
 ## Two-branch deployment model
 
@@ -45,7 +45,8 @@ Historically neither was in `public/`, so every deploy wiped them and the custom
 Content and presentation are deliberately separated:
 
 - **`src/data/content.jsx`** — a single exported `CONFIG` object holding *all* site content: `profile`, `researchInterests`, `aboutMe`, `publications`, `projects`, `education`, `blogs`, `galleries`. **Content changes should be made here, not in components.**
-- **`src/App.jsx`** — the whole shell: nav, dark-mode state, footer, and routing. "Routing" is `useState` only (`currentPage` ∈ `home` | `blog` | `life`, plus `selectedBlog` which overrides the page to render `BlogDetail`). No react-router, no URLs per page — links to a specific section/post are not possible without adding a router.
+- **`src/App.jsx`** — nav, dark-mode state, footer, and pathname-based page selection. `/`, `/blog/`, `/life/`, `/fm-geometry/` and content-backed `/blog/<id>/` have real static documents. Navigation uses ordinary anchors; legacy `/#blog` and `/#life` links are restored through a client redirect.
+- **`src/data/seo.js` and `site.js`** — page registry, metadata, structured data and canonical origin. The prerender script produces every registered HTML route, sitemap and robots file from one Vite HTML template. Never maintain a second metadata copy in another HTML file.
 - **`src/components/{HomePage,BlogPage,LifePage}.jsx`** — one per page; each maps over its `CONFIG` slice. `BlogPage` also exports `BlogDetail`.
 - **`src/components/ui/{FlatCard,SectionTitle}.jsx`** — the only shared primitives. `SectionTitle` takes an `accentColor` Tailwind class; `FlatCard` becomes clickable when given `onClick`.
 
@@ -54,9 +55,10 @@ Notable conventions:
 - **Dark mode** is Tailwind `darkMode: 'class'`, driven by a `dark` class on App's outermost div. State initializes from `localStorage.theme`, falling back to `prefers-color-scheme`, and follows OS changes only while no explicit choice is stored. Every new element needs paired `light dark:` classes.
 - **Colors are semantic per page**: indigo = Home/About, teal = Blog, blue = Life/Education. The accent bars, nav highlights, and top decorative stripe all follow this. Match it when adding sections.
 - **Style vocabulary**: flat (no rounded corners), heavy uppercase tracking-widest micro-labels, `font-black`, grayscale images that colorize on hover.
-- **`aboutMe` is Markdown** rendered by `react-markdown` with `rehype-raw`, so raw HTML like `<mark>` works and is styled by the custom `components` map in `HomePage.jsx`. Blog `content`, by contrast, is rendered as a plain React child — it is *not* passed through Markdown.
+- **`aboutMe` is Markdown** rendered by `react-markdown` with `rehype-raw`. String blog `content` is rendered as Markdown; React elements remain supported. Use H2 and below inside articles because the template supplies H1. Blog IDs are stable URL slugs; `href` entries link an existing project instead of creating a duplicate article.
 - **Assets** live in `public/` and are referenced by absolute path (`/images/...`, `/documents/...`). Filenames are case-sensitive once deployed; macOS is not, so a wrong-case path works locally and 404s in production. The gallery files are lowercase `.jpg` (the git index once disagreed with the disk on this and has been corrected).
-- **`index.html`** carries the real `<title>`, description, and Open Graph tags. The favicon is declared there *and* re-injected at runtime by `App.jsx` from `CONFIG.profile.favicon`; if you change the icon, update both.
+- **`index.html`** is the shared skeleton with SEO markers. Metadata is generated from `src/data/seo.js`; the client uses the same generator in development. The favicon is declared in the shared template; update it there if the icon changes.
+- **Images** under `public/images/` are optimized automatically by `npm run images` before dev/build. Keep originals; commit regenerated `public/images/optimized/` and `src/data/imageManifest.json`. `ResponsiveImage` reads the manifest for dimensions and srcset. Paper figures retain their already compressed files.
 
 ## Publications and projects
 

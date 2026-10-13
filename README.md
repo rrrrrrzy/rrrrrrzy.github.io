@@ -1,94 +1,97 @@
-# Portfolio Website
+# Ziyang Rao — Academic Homepage
 
-This project is a React-based portfolio built with Vite and Tailwind CSS.
+React, Vite and Tailwind site published at https://www.ziyangrao.com.
 
-## Project Structure
+## Source and published branches
 
-This repository uses a specific branching strategy to handle GitHub User Pages (`username.github.io`):
+| Branch | Purpose |
+| --- | --- |
+| `dev` | Source code and content; make all edits here |
+| `master` | Generated GitHub Pages site; do not edit directly |
 
-| Branch | Purpose | Content |
-|--------|---------|---------|
-| `dev`  | **Source Code** | The actual React/Vite source code. **Make all edits here.** |
-| `master` | **Live Site** | The built production files (`dist` folder). **Do not edit directly.** |
+`dist/` is generated and ignored on `dev`. Publishing uses the existing
+`gh-pages` command and replaces the published tree on `master`.
 
-> **Note**: GitHub User Pages always serves from the `master` (or `main`) branch by default. To allow this, we keep the source code on `dev` and deploy the built site to `master`.
+## Develop and verify
 
-## How to Develop
+Use Node 22 (`.nvmrc`).
 
-1.  Make sure you are on the `dev` branch:
-    ```bash
-    git checkout dev
-    ```
-2.  Install dependencies:
-    ```bash
-    npm install
-    ```
-3.  Start the local development server:
-    ```bash
-    npm run dev
-    ```
+```bash
+npm ci
+npm run dev
+```
 
-## How to Deploy
+```bash
+npm run build
+npm run preview
+```
 
-To update the live website:
+The build optimizes images, runs Vite, renders every registered route into static
+HTML, generates sitemap/robots, then validates SEO. Navigation and all content
+remain usable without JavaScript; the browser hydrates theme, chart, demo and
+citation controls. Inspect changed pages in the browser before publishing.
 
-1.  Commit your changes to the `dev` branch.
-2.  Run the deployment script:
-    ```bash
-    npm run deploy
-    ```
+## Content and SEO
 
-This script will automatically:
-1.  Build the project (`npm run build`).
-2.  Push the contents of the `dist` folder to the `master` branch.
+| File | Responsibility |
+| --- | --- |
+| `src/data/content.jsx` | Profile, bio, publications, education, blogs, gallery descriptions |
+| `src/data/fmGeometry.js` | FM Geometry paper facts, results, links and citation |
+| `src/data/seo.js` | Page registry, SEO metadata and structured data |
+| `src/data/site.js` | Canonical site origin and route normalization |
+| `src/components/` | Page presentation and interactive controls |
+| `scripts/prerender.mjs` | Static pages, sitemap and robots generation |
+| `scripts/check-seo.mjs` | Local and live SEO verification |
 
-> **Important**: deploying replaces the entire `master` branch. Files that must sit at the
-> site root — `CNAME` (custom domain) and the site-verification `.txt` — therefore live in
-> `public/` so each build copies them into `dist/`. Don't delete them, or the custom domain
-> will break on the next deploy.
+Pages: `/`, `/blog/`, `/life/`, `/fm-geometry/`. A blog with content and
+a stable `id`, without `href`, also generates `/blog/<id>/`.
+Old `/#blog` and `/#life` links redirect after client startup. The custom
+`404.html` is marked noindex.
 
-## Editing Content
+The homepage creates Person, ProfilePage, WebSite and publication-list structured
+data from visible content. Paper pages retain citation metadata. Each page has a
+unique title, description, canonical and sharing card. Metadata is generated
+from one configuration; do not copy it into additional HTML templates or
+manually maintain the sitemap.
 
-Nearly all site content lives in one place: the `CONFIG` object in `src/data/content.jsx`
-(profile, about, education, publications, projects, blog posts, photo galleries). Prefer
-editing that over touching the components.
+## Images
 
-## FM Geometry project homepage
+Keep original photos in `public/images/`; after changing them run:
 
-The Blog project card links to `/fm-geometry/`, a standalone paper homepage sharing
-the site's typography, colors, and theme preference. Vite builds a separate HTML
-entry so the URL works on GitHub Pages without a client-side routing fallback.
+```bash
+npm run images
+```
 
-- `src/data/fmGeometry.js`: authors, contributions, theoretical and empirical evidence, reported results, demo captions, and BibTeX.
-- `src/components/PaperPage.jsx` and `PaperPage.css`: project layout and interactions.
-- `fm-geometry/index.html`: page title and social sharing metadata.
-- `public/fm-geometry/media/`: optimized paper figures, video posters, and H.264 MP4s.
+Commit updated derivatives in `public/images/optimized/` and
+`src/data/imageManifest.json`. The build also runs this task automatically.
+WebP, responsive image candidates, dimensions and lazy loading reduce the
+browser's image downloads. FM Geometry's compressed figures and manual video
+playback are preserved.
 
-Paper metadata and results follow arXiv:2607.27933v3. Table averages are reproduced
-as reported, rather than recalculated from rounded cells. Figures come from the
-supplied paper sources; the four individual videos come from the supplied
-`aaai2027/vid` recordings. The correlation chart reproduces Table 1 and lets
-readers compare full-path and best-prefix scores across three benchmarks. Videos load on demand and retain manual playback.
+## Publish
 
-Run `npm run build` then `npm run preview` to check both `/fm-geometry/` and `/#blog`.
-The existing deployment command publishes both pages together.
+1. Commit the reviewed changes on `dev` and push the source branch.
+2. Run `npm run deploy`. Its predeploy build must pass all SEO checks before
+   publishing to `master`.
+3. After GitHub Pages updates, run `npm run seo:live` to verify the public pages,
+   assets, sitemap, robots and domain/verification files.
 
-### Search indexing
+GitHub Actions runs the same build on `dev` pushes and PRs. It does not publish
+automatically or require deployment credentials.
 
-`npm run build` now runs `scripts/prerender.mjs` after Vite. It uses
-`src/entry-server.jsx` to render the homepage and project page from the same React
-components used in the browser. The generated HTML contains the actual page
-content; `src/main.jsx` hydrates it to restore the interactive controls. Initial
-theme and hash navigation are restored after hydration.
+Keep these files in `public/` so every build preserves them:
 
-The project build also adds citation metadata and `ScholarlyArticle` JSON-LD from
-`src/data/fmGeometry.js`. Keep `citationTitle`, authors, publication date, and
-arXiv links consistent with the paper. Page and social descriptions live in
-`fm-geometry/index.html`; update those alongside the data description.
+- `CNAME`: custom domain.
+- `399cced8eb5c43350950649d7d1552a0.txt`: existing site verification.
 
-`public/robots.txt` and `public/sitemap.xml` are copied into `dist/`. Add new
-indexable page URLs to the sitemap when adding routes. Hash tabs such as
-`/#blog` are not separate documents and should not be listed.
+## Maintenance guides
 
-See [the SEO rollout guide](docs/fm-geometry-seo.md) for target queries and
-post-deployment search-console checks.
+- [全站 SEO 与维护手册](docs/seo-maintenance.md): adding papers/posts/pages,
+  release checks, search-console setup, observation cadence, rollback and
+  dependency maintenance.
+- [FM Geometry SEO guide](docs/fm-geometry-seo.md): paper keywords and research
+  backlinks.
+
+Search-console accounts, indexing submissions and DNS changes are separate from
+the site build. Structured data and sitemap help discovery; ranking depends on
+content, competition and relevant external references.

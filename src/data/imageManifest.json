@@ -1,0 +1,220 @@
+{
+  "/images/gallery/1.jpg": {
+    "hash": "3944d7f3251dfe5baa061a815a7ec0f273139d79ff5b519022f02d1cbbd11087",
+    "width": 1280,
+    "height": 1924,
+    "variants": [
+      {
+        "src": "/images/optimized/gallery-1-640.webp",
+        "width": 640,
+        "height": 961
+      },
+      {
+        "src": "/images/optimized/gallery-1-1280.webp",
+        "width": 1280,
+        "height": 1924
+      }
+    ]
+  },
+  "/images/gallery/2.jpg": {
+    "hash": "bdf3318bcc63ec2005e88a7618c07dadb81d5406d041dc6ea84b04df92b99e84",
+    "width": 1280,
+    "height": 1707,
+    "variants": [
+      {
+        "src": "/images/optimized/gallery-2-640.webp",
+        "width": 640,
+        "height": 853
+      },
+      {
+        "src": "/images/optimized/gallery-2-1280.webp",
+        "width": 1280,
+        "height": 1707
+      }
+    ]
+  },
+  "/images/gallery/3.jpg": {
+    "hash": "53aef23b9b1535a849d3f11bcbdd84feb3ba28d66eb1c2d817ce9aa3f8690a96",
+    "width": 1280,
+    "height": 1924,
+    "variants": [
+      {
+        "src": "/images/optimized/gallery-3-640.webp",
+        "width": 640,
+        "height": 962
+      },
+      {
+        "src": "/images/optimized/gallery-3-1280.webp",
+        "width": 1280,
+        "height": 1924
+      }
+    ]
+  },
+  "/images/hkust.png": {
+    "hash": "170b2d0434d447c807b7e993427335072a31a712d20ba619c82f43fee9d390cd",
+    "width": 225,
+    "height": 225,
+    "variants": [
+      {
+        "src": "/images/optimized/hkust-256.webp",
+        "width": 225,
+        "height": 225
+      },
+      {
+        "src": "/images/optimized/hkust-512.webp",
+        "width": 225,
+        "height": 225
+      }
+    ]
+  },
+  "/images/icon.png": {
+    "hash": "b37b433e15c778fabf1db28e11c44aa93c68e0f902b6fdbacfbdaf14e3412a70",
+    "width": 512,
+    "height": 512,
+    "variants": [
+      {
+        "src": "/images/optimized/icon-256.webp",
+        "width": 256,
+        "height": 256
+      },
+      {
+        "src": "/images/optimized/icon-512.webp",
+        "width": 512,
+        "height": 512
+      }
+    ]
+  },
+  "/images/profile.jpg": {
+    "hash": "a5255ed98ca8d2e2a3af6e5f528e8704ff1e28d954f84f2940e5dbd05b7aac48",
+    "width": 512,
+    "height": 512,
+    "variants": [
+      {
+        "src": "/images/optimized/profile-256.webp",
+        "width": 256,
+        "height": 256
+      },
+      {
+        "src": "/images/optimized/profile-512.webp",
+        "width": 512,
+        "height": 512
+      }
+    ]
+  },
+  "/images/ruc.png": {
+    "hash": "d6b0440d915b9b66f696e5c88faedd03dcc783b1ee20bd59592772dd12558191",
+    "width": 512,
+    "height": 512,
+    "variants": [
+      {
+        "src": "/images/optimized/ruc-256.webp",
+        "width": 256,
+        "height": 256
+      },
+      {
+        "src": "/images/optimized/ruc-512.webp",
+        "width": 512,
+        "height": 512
+      }
+    ]
+  },
+  "/fm-geometry/media/d3il_accel_branches.webp": {
+    "width": 1315,
+    "height": 860,
+    "variants": [
+      {
+        "src": "/fm-geometry/media/d3il_accel_branches.webp",
+        "width": 1315,
+        "height": 860
+      }
+    ]
+  },
+  "/fm-geometry/media/denoise_step_sweep_prefix_curves.webp": {
+    "width": 1159,
+    "height": 1172,
+    "variants": [
+      {
+        "src": "/fm-geometry/media/denoise_step_sweep_prefix_curves.webp",
+        "width": 1159,
+        "height": 1172
+      }
+    ]
+  },
+  "/fm-geometry/media/fm_field.webp": {
+    "width": 2000,
+    "height": 903,
+    "variants": [
+      {
+        "src": "/fm-geometry/media/fm_field.webp",
+        "width": 2000,
+        "height": 903
+      }
+    ]
+  },
+  "/fm-geometry/media/overview.jpg": {
+    "width": 1280,
+    "height": 720,
+    "variants": [
+      {
+        "src": "/fm-geometry/media/overview.jpg",
+        "width": 1280,
+        "height": 720
+      }
+    ]
+  },
+  "/fm-geometry/media/real-failure.jpg": {
+    "width": 1280,
+    "height": 960,
+    "variants": [
+      {
+        "src": "/fm-geometry/media/real-failure.jpg",
+        "width": 1280,
+        "height": 960
+      }
+    ]
+  },
+  "/fm-geometry/media/real-success.jpg": {
+    "width": 1280,
+    "height": 960,
+    "variants": [
+      {
+        "src": "/fm-geometry/media/real-success.jpg",
+        "width": 1280,
+        "height": 960
+      }
+    ]
+  },
+  "/fm-geometry/media/simulation-can.jpg": {
+    "width": 1280,
+    "height": 720,
+    "variants": [
+      {
+        "src": "/fm-geometry/media/simulation-can.jpg",
+        "width": 1280,
+        "height": 720
+      }
+    ]
+  },
+  "/fm-geometry/media/simulation-mug.jpg": {
+    "width": 1280,
+    "height": 720,
+    "variants": [
+      {
+        "src": "/fm-geometry/media/simulation-mug.jpg",
+        "width": 1280,
+        "height": 720
+      }
+    ]
+  },
+  "/fm-geometry/media/teaser.webp": {
+    "width": 2000,
+    "height": 1141,
+    "variants": [
+      {
+        "src": "/fm-geometry/media/teaser.webp",
+        "width": 2000,
+        "height": 1141
+      }
+    ]
+  }
+}

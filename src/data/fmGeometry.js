@@ -1,8 +1,9 @@
 // Content follows arXiv:2607.27933v3, Table 2, and the supplied demo recordings.
+import { SITE } from './site.js';
 export const FM_PAPER = {
     title: 'The Geometric Nature of Flow Matching Uncertainty',
     citationTitle: 'The Geometry of Flow-Matching Uncertainty: A Cost-free Uncertainty Proxy and Its Application in Flow-based VLA Failure Detection',
-    url: 'https://www.ziyangrao.com/fm-geometry/',
+    url: `${SITE.origin}/fm-geometry/`,
     arxivId: '2607.27933',
     datePublished: '2026-07-30',
     abstractUrl: 'https://arxiv.org/abs/2607.27933',

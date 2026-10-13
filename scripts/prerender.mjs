@@ -1,62 +1,24 @@
-import { readFile, writeFile } from 'node:fs/promises';
-import { createServer } from 'vite';
-import { FM_PAPER as paper } from '../src/data/fmGeometry.js';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { dirname } from 'node:path';
+import { withSite } from './load-site.mjs';
 
-const escapeAttribute = value => String(value)
-    .replaceAll('&', '&amp;').replaceAll('"', '&quot;')
-    .replaceAll('<', '&lt;').replaceAll('>', '&gt;');
-const meta = (name, content) => `    <meta name="${name}" content="${escapeAttribute(content)}" />`;
-
-function paperMetadata() {
-    const article = {
-        '@context': 'https://schema.org',
-        '@type': 'ScholarlyArticle',
-        '@id': `${paper.url}#article`,
-        name: paper.citationTitle,
-        headline: paper.citationTitle,
-        alternativeHeadline: paper.title,
-        description: paper.description,
-        url: paper.url,
-        mainEntityOfPage: { '@type': 'WebPage', '@id': paper.url },
-        sameAs: paper.abstractUrl,
-        datePublished: paper.datePublished,
-        inLanguage: 'en',
-        isAccessibleForFree: true,
-        image: `${paper.url}media/overview.jpg`,
-        author: paper.authors.map(author => ({
-            '@type': 'Person', name: author.name,
-            ...(author.href ? { url: new URL(author.href, paper.url).href } : {}),
-        })),
-        identifier: { '@type': 'PropertyValue', propertyID: 'arXiv', value: paper.arxivId },
-        encoding: { '@type': 'MediaObject', contentUrl: paper.paper, encodingFormat: 'application/pdf' },
-        about: ['Flow matching uncertainty', 'Denoising acceleration', 'Vision-language-action failure detection']
-            .map(name => ({ '@type': 'Thing', name })),
-    };
-    return [
-        meta('citation_title', paper.citationTitle),
-        ...paper.authors.map(author => meta('citation_author', author.name)),
-        meta('citation_publication_date', paper.datePublished.replaceAll('-', '/')),
-        meta('citation_pdf_url', paper.paper),
-        meta('citation_arxiv_id', paper.arxivId),
-        `    <script type="application/ld+json">${JSON.stringify(article).replaceAll('<', '\\u003c')}</script>`,
-    ].join('\n');
-}
-
-// Use the same React components as the browser; no parallel SEO-only copy of the page.
-// Do not call listen(): prerendering needs module loading, not an HTTP/HMR listener.
-const server = await createServer({ server: { hmr: false, watch: null }, appType: 'custom' });
-try {
-    await server.pluginContainer.buildStart({});
-    const { render } = await server.ssrLoadModule('/src/entry-server.jsx');
-    for (const [pathname, file] of [['/', 'dist/index.html'], ['/fm-geometry/', 'dist/fm-geometry/index.html']]) {
-        let html = await readFile(file, 'utf8');
-        if (!html.includes('<div id="root"></div>')) throw new Error(`Missing root placeholder in ${file}`);
-        const markup = render(pathname);
-        html = html.replace('<div id="root"></div>', () => `<div id="root">${markup}</div>`);
-        if (pathname === '/fm-geometry/') html = html.replace('</head>', () => `${paperMetadata()}\n  </head>`);
+await withSite(async ({ render, getPages, getPage, renderSeoHead, SITE }) => {
+    const template = await readFile('dist/index.html', 'utf8');
+    const headMarker = /<!-- seo:start -->[\s\S]*?<!-- seo:end -->/;
+    if (!headMarker.test(template) || !template.includes('<div id="root"></div>')) throw new Error('Missing SEO or root placeholder in index.html');
+    const pages = getPages();
+    if (new Set(pages.map(page => page.pathname)).size !== pages.length) throw new Error('Duplicate page URLs');
+    for (const page of [...pages, getPage('/404.html')]) {
+        const file = page.pathname === '/404.html' ? 'dist/404.html' : 'dist' + page.pathname + 'index.html';
+        const html = template
+            .replace(headMarker, () => '<!-- seo:start -->\n    ' + renderSeoHead(page) + '\n    <!-- seo:end -->')
+            .replace('<div id="root"></div>', () => '<div id="root">' + render(page.pathname) + '</div>');
+        await mkdir(dirname(file), { recursive: true });
         await writeFile(file, html);
-        console.log(`Prerendered ${pathname}`);
+        console.log('Prerendered ' + page.pathname);
     }
-} finally {
-    await server.close();
-}
+    const escapeXml = text => text.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+    const sitemap = pages.map(page => '  <url><loc>' + escapeXml(new URL(page.pathname, SITE.origin).href) + '</loc>' + (page.modified ? '<lastmod>' + escapeXml(page.modified) + '</lastmod>' : '') + '</url>').join('\n');
+    await writeFile('dist/sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + sitemap + '\n</urlset>\n');
+    await writeFile('dist/robots.txt', 'User-agent: *\nAllow: /\n\nSitemap: ' + SITE.origin + '/sitemap.xml\n');
+});

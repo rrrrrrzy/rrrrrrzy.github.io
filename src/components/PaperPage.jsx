@@ -89,7 +89,7 @@ export default function PaperPage({ isDark, toggleTheme }) {
                         {sections.map(([id, label]) => <a key={id} href={`#${id}`} aria-current={active === id ? 'location' : undefined} onClick={() => setMenuOpen(false)}>{label}</a>)}
                     </div>
                     <div className="paper-nav-actions">
-                        <a href="/#blog" className="paper-owner" aria-label="Back to Ziyang Rao’s blog"><ArrowLeft size={13} /> ZIYANG RAO</a>
+                        <a href="/blog/" className="paper-owner" aria-label="Back to Ziyang Rao’s blog"><ArrowLeft size={13} /> ZIYANG RAO</a>
                         <button onClick={toggleTheme} className="paper-icon-button" aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}>{isDark ? <Moon size={17} /> : <Sun size={17} />}</button>
                         <button className="paper-icon-button paper-menu" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle project navigation" aria-expanded={menuOpen}>{menuOpen ? <X size={20} /> : <Menu size={20} />}</button>
                     </div>
@@ -181,7 +181,7 @@ export default function PaperPage({ isDark, toggleTheme }) {
                     <div className="paper-citation"><div className="paper-citation-toolbar"><span>BIBTEX</span><button onClick={copyCitation}>{copyStatus === 'Copied' ? <Check size={14} /> : <Copy size={14} />}{copyStatus === 'Copied' ? 'Copied' : 'Copy citation'}</button></div><pre><code>{paper.bibtex}</code></pre><span className="paper-copy-status" role="status">{copyStatus}</span></div>
                 </section>
             </main>
-            <footer className="paper-footer paper-container"><a className="paper-wordmark" href="#top">FM<span>/</span>GEOMETRY</a><p>{paper.title} · 2026</p><a href="/#blog"><ArrowLeft size={14} /> Ziyang Rao’s homepage</a></footer>
+            <footer className="paper-footer paper-container"><a className="paper-wordmark" href="#top">FM<span>/</span>GEOMETRY</a><p>{paper.title} · 2026</p><a href="/"><ArrowLeft size={14} /> Ziyang Rao’s homepage</a></footer>
         </div>
     </div>;
 }

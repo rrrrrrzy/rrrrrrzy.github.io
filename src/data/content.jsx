@@ -1,7 +1,10 @@
 export const CONFIG = {
     profile: {
         name: "饶子扬 / Ziyang Rao",
+        nameEnglish: "Ziyang Rao",
+        nameChinese: "饶子扬",
         title: "PhD candidate @ HKUST (Guangzhou)",
+        bio: "I study embodied AI, flow matching and uncertainty in vision-language-action models at HKUST (Guangzhou).",
         location: "Guangzhou, China",
         email: "zrao538@connect.hkust-gz.edu.cn",
         github: "https://github.com/rrrrrrzy",
@@ -10,7 +13,6 @@ export const CONFIG = {
         // twitter: "https://twitter.com/yourusername",
         avatar: "/images/profile.jpg",
         favicon: "/images/favicon.ico",
-        // bio: ""
     },
     researchInterests: [
         { name: "Flow Matching VLA", color: "bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300" },
@@ -131,6 +133,7 @@ I earned my MPhil in AI at the same lab, co-advised by Prof. Hui Xiong and [Dr. 
             category: 'Paper',
             excerpt: 'A cost-free uncertainty proxy from a single denoising trajectory. Explore the method, results, and robot demonstrations.',
             image: '/fm-geometry/media/teaser.webp',
+            imageAlt: 'Certain and uncertain flow-matching velocity fields',
             href: '/fm-geometry/',
         },
     ],
@@ -140,9 +143,9 @@ I earned my MPhil in AI at the same lab, co-advised by Prof. Hui Xiong and [Dr. 
             title: "Random",
             description: "Random photo dump.",
             photos: [
-                "/images/gallery/1.jpg",
-                "/images/gallery/2.jpg",
-                "/images/gallery/3.jpg",
+                { src: "/images/gallery/1.jpg", alt: "Green fields below layered, arid mountain ridges" },
+                { src: "/images/gallery/2.jpg", alt: "A snow-covered mountain reflected in a still lake" },
+                { src: "/images/gallery/3.jpg", alt: "Hikers and a yellow tent beside glacier ice on a rocky mountainside" },
 
             ]
         }
