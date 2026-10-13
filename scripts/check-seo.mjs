@@ -107,7 +107,14 @@ await withSite(async ({ getPages, getPage, SITE }) => {
     assert.ok(robots.includes(`Sitemap: ${SITE.origin}/sitemap.xml`), 'Missing sitemap discovery');
     assert.ok(!/^Disallow:\s*\/\s*$/m.test(robots), 'robots.txt blocks the whole site');
     for (const file of ['/CNAME', '/399cced8eb5c43350950649d7d1552a0.txt']) {
-        assert.equal((await read(file)).trim(), (await readFile('public' + file, 'utf8')).trim(), `${file}: domain/verification file changed`);
+        let deployed;
+        if (live && file === '/CNAME') {
+            // GitHub Pages uses CNAME for configuration but does not serve it as a public URL.
+            const response = await fetch(`https://raw.githubusercontent.com/${SITE.repository}/${SITE.deploymentBranch}/CNAME`, { signal: AbortSignal.timeout(20000) });
+            assert.equal(response.status, 200, 'Published branch must preserve CNAME');
+            deployed = await response.text();
+        } else deployed = await read(file);
+        assert.equal(deployed.trim(), (await readFile('public' + file, 'utf8')).trim(), `${file}: domain/verification file changed`);
     }
     if (live) {
         const missing = await read('/__seo_check_missing_page_404__/', 404);

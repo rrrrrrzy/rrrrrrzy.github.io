@@ -22,7 +22,7 @@
 | --- | --- | --- |
 | 姓名、身份、简介、研究方向、论文、教育 | `src/data/content.jsx` | 可见正文、Person / ProfilePage 与论文列表结构化数据 |
 | 各页面 SEO 标题、描述、类型与路由 | `src/data/seo.js` | title、description、canonical、分享卡片、JSON-LD、sitemap |
-| canonical 主域名 | `src/data/site.js` | 全站 canonical、URL、robots 和 sitemap；还需协调 CNAME / DNS |
+| canonical 主域名、仓库与发布分支 | `src/data/site.js` | 全站 canonical、URL、robots 和 sitemap，以及发布分支 CNAME 核验；还需协调 DNS |
 | FM Geometry 标题、作者、日期、链接 | `src/data/fmGeometry.js` | citation 标签与论文 JSON-LD |
 | 照片 | `public/images/` 下的原图 | 构建自动生成 WebP、srcset 和尺寸 manifest |
 | 检查逻辑 | `scripts/check-seo.mjs` | 本地、CI 和线上 SEO 验证 |
@@ -65,7 +65,7 @@ Your original Markdown article with verified examples and references.`,
 3. `npm run preview`：查看首页、新增页面以及相关主题与交互。检查浏览器返回、直接访问和手机布局。SEO 自动检查不等于完整视觉验收或 Core Web Vitals 测试。
 4. 提交源代码并推送 `dev`。GitHub Actions 的 “Build and SEO checks” 会运行相同检查；CI 不会自动部署，也不需要新增部署密钥。
 5. `npm run deploy`：先执行带检查的 build，再按现有流程将产物发布到 `master`。失败的构建不会继续部署。
-6. 等待 GitHub Pages 更新后运行 `npm run seo:live`。它检查真实 HTTP 页面及资源；CDN 仍返回旧版本时稍后重试。命令失败不能当作已成功发布。
+6. 等待 GitHub Pages 更新后运行 `npm run seo:live`。它检查真实 HTTP 页面及资源；CDN 仍返回旧版本时稍后重试。CNAME 属于 GitHub Pages 的保留配置文件，线上不会提供 `/CNAME`，因此从发布分支核验它；验证码文件从站点网址核验。命令失败不能当作已成功发布。
 
 ### 发布回退
 
